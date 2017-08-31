@@ -12,19 +12,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.libertymutual.goforcode.wimp.models.Actor;
 import com.libertymutual.goforcode.wimp.models.Movie;
+import com.libertymutual.goforcode.wimp.services.ActorRepository;
 import com.libertymutual.goforcode.wimp.services.MovieRepository;
 
 @RestController
 @RequestMapping("/api/movies")
 public class MovieApiController {
 	private MovieRepository movieRepo;
+	private ActorRepository actorRepo;
 	
-	public MovieApiController(MovieRepository movieRepo)	{
+	public MovieApiController(MovieRepository movieRepo, ActorRepository actorRepo)	{
 		this.movieRepo = movieRepo;
-		
-		movieRepo.save(new Movie("The Shining", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348)));
-		movieRepo.save(new Movie("2001: A Space Odyssey", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348)));
+		this.actorRepo = actorRepo;
+		Movie movie1 = new Movie("The Shining", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348));
+		Movie movie2 = new Movie("2001: A Space Odyssey", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348));
+		movie1.setActors(actorRepo.findAll());
+		movieRepo.save(movie1);
+		movieRepo.save(movie2);
 	}
 	
 	@GetMapping("")
@@ -61,6 +67,14 @@ public class MovieApiController {
 		}
 		movie.setId(id);
 		return movieRepo.save(movie);
+	}
+	
+	@PostMapping("{movieId}/actors")
+	public Movie associateActor(@RequestBody Actor actor, @PathVariable long movieId)	{
+		Movie movie = movieRepo.findOne(movieId);
+		movie.addActor(actorRepo.findOne(actor.getId()));
+		movieRepo.save(movie);
+		return movie;
 	}
 
 }
