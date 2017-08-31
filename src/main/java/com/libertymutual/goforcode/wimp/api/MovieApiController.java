@@ -17,8 +17,12 @@ import com.libertymutual.goforcode.wimp.models.Movie;
 import com.libertymutual.goforcode.wimp.services.ActorRepository;
 import com.libertymutual.goforcode.wimp.services.MovieRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/movies")
+@Api(description="Use this to get movies")
 public class MovieApiController {
 	private MovieRepository movieRepo;
 	private ActorRepository actorRepo;
@@ -33,6 +37,7 @@ public class MovieApiController {
 		movieRepo.save(movie2);
 	}
 	
+	@ApiOperation(value="Get all movies", notes="Here's a note")
 	@GetMapping("")
 	public List<Movie> getAll()	{
 		return movieRepo.findAll();
