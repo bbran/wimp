@@ -17,7 +17,7 @@ public class Award {
 	private Long id;
 	
 	@Column(nullable=false, length=500)
-	private String name;
+	private String title;
 	
 	@Column(nullable=false, length=200)
 	private String organization;
@@ -30,8 +30,8 @@ public class Award {
 	
 	public Award()	{}
 	
-	public Award(String name, String organization, int year)	{
-		this.name = name;
+	public Award(String title, String organization, int year)	{
+		this.title = title;
 		this.organization = organization;
 		this.year = year;
 	}
@@ -44,12 +44,12 @@ public class Award {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getOrganization() {
