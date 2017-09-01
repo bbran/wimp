@@ -20,9 +20,9 @@ public class AwardApiController {
 	public AwardApiController(AwardRepository awardRepo)	{
 		this.awardRepo = awardRepo;
 		
-		awardRepo.save(new Award("Best Leading Actor", "BAFTA Film Award", 2001));
-		awardRepo.save(new Award("Best Supporting Actor", "AACTA International Award", 1977));
-		awardRepo.save(new Award("Best Actor in a Comedy", "Critics Choice Award", 2010));
+//		awardRepo.save(new Award("Best Leading Actor", "BAFTA Film Award", 2001));
+//		awardRepo.save(new Award("Best Supporting Actor", "AACTA International Award", 1977));
+//		awardRepo.save(new Award("Best Actor in a Comedy", "Critics Choice Award", 2010));
 	}
 	
 	@GetMapping("")

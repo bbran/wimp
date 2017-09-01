@@ -28,9 +28,9 @@ public class ActorApiController {
 		this.actorRepo = actorRepo;
 		this.awardRepo = awardRepo;
 		
-		actorRepo.save(new Actor("Christian", "Bale", new Long(1990), new Date(Date.parse("01/01/1970"))));
-		actorRepo.save(new Actor("Charlie", "Chaplin", new Long(1930), new Date(Date.parse("01/01/1900"))));
-		actorRepo.save(new Actor("Kirsten", "Dunst", new Long(1995), new Date(Date.parse("01/01/1980"))));
+//		actorRepo.save(new Actor("Christian", "Bale", new Long(1990), new Date(Date.parse("01/01/1970"))));
+//		actorRepo.save(new Actor("Charlie", "Chaplin", new Long(1930), new Date(Date.parse("01/01/1900"))));
+//		actorRepo.save(new Actor("Kirsten", "Dunst", new Long(1995), new Date(Date.parse("01/01/1980"))));
 	}
 	
 	@GetMapping("")
@@ -82,6 +82,6 @@ public class ActorApiController {
 		Actor actor = actorRepo.findOne(actorId);
 		award.setActor(actor);
 		awardRepo.save(award);
-		return actor;		
+		return actor;
 	}
 }

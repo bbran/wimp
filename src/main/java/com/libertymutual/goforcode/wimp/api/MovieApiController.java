@@ -1,6 +1,5 @@
 package com.libertymutual.goforcode.wimp.api;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,11 +29,11 @@ public class MovieApiController {
 	public MovieApiController(MovieRepository movieRepo, ActorRepository actorRepo)	{
 		this.movieRepo = movieRepo;
 		this.actorRepo = actorRepo;
-		Movie movie1 = new Movie("The Shining", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348));
-		Movie movie2 = new Movie("2001: A Space Odyssey", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348));
-		movie1.setActors(actorRepo.findAll());
-		movieRepo.save(movie1);
-		movieRepo.save(movie2);
+//		Movie movie1 = new Movie("The Shining", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348));
+//		Movie movie2 = new Movie("2001: A Space Odyssey", "20th Century Fox", new Date(Date.parse("01/01/1970")), new Long(230909348));
+//		movie1.setActors(actorRepo.findAll());
+//		movieRepo.save(movie1);
+//		movieRepo.save(movie2);
 	}
 	
 	@ApiOperation(value="Get all movies", notes="Here's a note")
