@@ -80,7 +80,6 @@ public class ActorApiController {
 	@PostMapping("{actorId}/awards")
 	public Actor assignAward(@RequestBody Award award, @PathVariable long actorId)	{
 		Actor actor = actorRepo.findOne(actorId);
-		award = awardRepo.findOne(award.getId());
 		award.setActor(actor);
 		awardRepo.save(award);
 		return actor;		
